@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login page</title>
+  {% load static %}
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AdminLTE 3 | delete</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+
+<link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'admin/dist/css/adminlte.min.css' %}">
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .delete-button {
+            background-color: #ff4444;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .delete-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+<body>
+    <div class="container">
+        <h2>Delete project</h2>
+        <p>Are you sure you want to delete this project?</p>
+        {% csrf_token %}
+        <form action="{url'delete.html//{{Tbltwo.id}}'}" method="POST">
+        <button class="delete-button" onclick="deletePage()">Delete</button>
+            </form>
+    </div>
+
+    <script>
+        function deletePage() {
+            // You can perform any necessary deletion logic here
+            alert("Project deleted!"); // For demonstration purposes, show an alert
+        }
+    </script>
+
+<script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'admin/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'admin/dist/js/adminlte.min.js' %}"></script>
+</body>
+</html>

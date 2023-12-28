@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crawling</title>
+   {% load static %}
+   <!-- Google Font: Source Sans Pro -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'admin/dist/css/adminlte.min.css' %}">
+     <style>
+ button {
+    background-color: pink;
+    color: white;
+    border: none;
+    padding: 80px 70px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 12px 12px;
+    cursor: pointer;
+ }
+</style>
+</head>
+<body>
+
+
+
+        <button type="button" name="num1" onclick="window.location.href='#'">Start Crawling</button>
+        <div class="card-body p-0">
+          <table class="table table-striped projects">
+              <thead>
+              <tr>
+               <th style="width: 20%">
+                          start
+                      </th>
+                      <th style="width: 20%">
+                         end
+                      </th>
+
+                      <th style="width: 30%">
+                          dwnldpages
+                      </th>
+                      <th>
+                          checkpages
+                      </th>
+                  </tr>
+              </thead>
+              <tbody>
+               {% for x in crawl %}
+                <tr>
+
+                          <td>
+                              {{ x.start }}
+                          </td>
+                          <td>
+                              {{ x.start }}
+                          </td>
+                          <td>
+                              {{ x.dwnldpages}}
+                          </td>
+                          <td>
+                              {{ x.checkpages}}
+                          </td>
+                </tr>
+              </tbody>
+        {% endfor %}
+        </table>
+        </div>
+<script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'admin/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'admin/dist/js/adminlte.min.js' %}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{% static 'admin/dist/js/demo.js' %}"></script>
+</body>
+</html>

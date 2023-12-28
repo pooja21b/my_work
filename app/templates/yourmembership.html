@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>your membership</title>
+  {% load static %}
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'admin/plugins/fontawesome-free/css/all.min.css' %}">
+
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'admin/dist/css/adminlte.min.css' %}">
+    <style>
+        //------- FONTS
+        import sass
+$agw-web-icon: "agentcis-webicons";
+$fa-css-prefix: icon !default;
+$font-bold: 800;
+$font-icon: "FontAwesome";
+$font-light: 300;
+$font-semi-bold: 600;
+$font-primary: 'Open Sans',
+sans-serif;
+$font-secondary: 'Playfair Display',
+serif;
+$font: normal 13px/18px $font-primary;
+//-------- BORDERS
+$grey-border-color: #ddd;
+
+//--------- BACKGROUNDS
+$base-box-bg: #fbfbfb;
+
+//--------- COLORS
+$green-color: #4CB992;
+$light-color: #ffffff;
+$light-green-color: #7ED321;
+
+$orange-color: #F5A623;
+$primary-color: #2daff4;
+$purple-color: #8A74B9;
+$secondary-color-2: #333;
+
+// ==============================================
+@mixin pricingPanel($theme-color) {
+  .panel-heading {
+    background-color: $theme-color;
+    h3 {
+      color: $light-color;
+    }
+    label {
+      background: $light-color;
+      color: $theme-color;
+    }
+  }
+  .panel-body {
+    border-top-color: $theme-color;
+  }
+  .panel-footer {
+    .pricePlans {
+      border-color: $theme-color;
+      color: $theme-color;
+    }
+  }
+}
+
+@mixin button($bg-color, $text-color) {
+  background: $bg-color;
+  color: $text-color;
+  &:active:before,
+  &:focus:before,
+  &:hover:before {
+    background: darken($bg-color, 10%);
+    color: $text-color;
+  }
+  &:before {
+    background: darken($bg-color, 10%);
+  }
+}
+
+.btnPrimary {
+  @include button($primary-color, $light-color);
+}
+
+.btnOrange {
+  @include button($orange-color, $light-color);
+}
+
+.btnPurple {
+  @include button(purple-color, light-color);
+}
+
+.btnGreen {
+  @include button(green-color, light-color);
+}
+
+.btnLightGreen {
+  @include button(light-green-color, light-color);
+}
+
+// ===========================================
+.pricingStarter {
+  border: 1px solid grey-border-color;
+  color: secondary-color-2;
+  line-height: 24px;
+  margin: 40px auto 15px;
+  padding: 25px 0;
+  text-align: center;
+  width: 400px;
+  h3 {
+    color: light-green-color;
+    margin: 5px 0 20px;
+  }
+  ul {
+    border-bottom: 1px solid grey-border-color;
+    border-top: 3px solid light-green-color;
+    list-style: none;
+    margin: 0 0 25px;
+    padding: 25px 10px;
+    li {
+      font-weight: 400;
+      line-height: 1.8em;
+    }
+    strong {
+      font-weight: 600;
+    }
+  }
+  span {
+    display: block;
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+  a.btnOutlined {
+    background: light-green-color;
+    color: light-color;
+    &::before {
+      background: darken(light-green-color, 10%);
+    }
+  }
+  label {
+    color: $secondary-color-2;
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 15px;
+  }
+}
+
+section.pricingPaid {
+  [class^="col-"],
+  [class^=" col-"] {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+  .pricingGrid {
+    border-radius: 0;
+    color: #9B9B9B;
+    margin: 0 0 70px;
+    padding: 0;
+    text-align: left;
+    transition: all .2s;
+    .panel-heading {
+      border-radius: 0;
+      margin: 0;
+      padding: 30px 25px;
+      position: relative;
+      h3 {
+        line-height: 18px;
+        margin: 0;
+        text-align: left;
+        text-transform: none;
+      }
+      label {
+        border-radius: 3px;
+        color: $light-color;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 1.2;
+        padding: 5px 10px;
+        position: absolute;
+        right: 25px;
+        text-transform: uppercase;
+        top: 25px;
+      }
+    }
+    .panel-body {
+      border-color: $grey-border-color;
+      border-style: solid;
+      border-width: 0 1px 1px;
+      min-height: 215px;
+      p {
+        color: $secondary-color-2;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        padding-bottom: 0;
+      }
+      ul {
+        margin: 0 25px;
+        padding: 0;
+        position: relative;
+        li {
+          color: $secondary-color-2;
+          font-size: 16px;
+          font-weight: 400;
+          list-style: none;
+          padding: 0;
+          &::before {
+            box-sizing: border-box;
+            content: '•';
+            display: inline-block;
+            font-size: 18px;
+            margin-left: -55px;
+            padding-right: 15px;
+            position: absolute;
+            text-align: right;
+            width: 58px;
+          }
+        }
+      }
+      .pricingInput {
+        background-color: transparent;
+        border: 1px solid $grey-border-color;
+        height: 35px;
+        margin-right: 8px;
+        padding: 3px 5px;
+        width: 70px;
+      }
+    }
+    .panel-footer {
+      background: transparent;
+      border-color: $grey-border-color;
+      border-style: solid;
+      border-width: 0 1px 1px;
+      padding: 35px 25px 25px;
+      .pricingRate {
+        margin-bottom: 35px;
+        min-height: 90px;
+        .price {
+          color: $secondary-color-2;
+          display: block;
+          font-size: 42px;
+          font-weight: 600;
+          sup {
+            font-size: 22px;
+            font-weight: normal;
+            top: -11px;
+          }
+          small {
+            color: #dbdbdb;
+            font-size: 16px;
+          }
+        }
+        .priceMonthly {
+          display: none;
+        }
+        .pricePlans {
+          border: 1px solid;
+          display: inline-block;
+          font-size: 14px;
+          font-weight: 600;
+          margin-top: 15px;
+          padding: 0 15px;
+          border-radius: 35px;
+        }
+      }
+      a.btn {
+        margin: 0;
+      }
+      .btnMonthly {
+        display: none;
+      }
+    }
+  }
+  .pricingViewToggler {
+    margin: 60px auto 0;
+    position: relative;
+    width: 225px;
+    .toggle-button {
+      background-color: $base-box-bg;
+      border: 1px solid darken($base-box-bg, 10%);
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-block;
+      height: 40px;
+      margin: 5px 0;
+      position: relative;
+      right: -30%;
+      width: 80px;
+      user-select: none;
+      -ms-user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      button {
+        background-color: $primary-color;
+        border: none;
+        border-radius: 100%;
+        cursor: pointer;
+        display: block;
+        float: left;
+        height: 30px;
+        left: 8px;
+        margin: -3px 0 0 -3px;
+        outline: 0;
+        position: absolute;
+        top: 7px;
+        transition: left 0.3s;
+        width: 30px;
+      }
+    }
+    .toggle-button-monthly button {
+      border: none;
+      height: 30px;
+      left: 42px;
+      margin: 0;
+      top: 4px;
+      width: 30px;
+    }
+    span {
+      color: darken($light-color, 20%);
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      position: absolute;
+      top: 8px;
+      &.annual {
+        left: 0;
+      }
+      &.monthly {
+        right: 0;
+      }
+      &.active {
+        color: $secondary-color-2;
+      }
+    }
+  }
+  .pricingBasic {
+    @include pricingPanel ($primary-color);
+  }
+  .pricingPlus {
+    @include pricingPanel ($orange-color);
+    .panel-heading {
+      position: relative;
+    }
+  }
+  .pricingPremium {
+    @include pricingPanel ($purple-color);
+  }
+  .pricingEnterprise {
+    @include pricingPanel ($green-color);
+    li:first-child {
+      font-weight: 600 !important;
+      &::before {
+        display: none !important;
+      }
+    }
+    .enterpriseAnnually,
+    .enterpriseMonthly {
+      .price > span {
+        margin: 0 -10px
+      }
+    }
+  }
+}
+
+.christmasIcons {
+  .christmasHat {
+    left: -12px;
+    position: absolute;
+    top: -60px;
+  }
+}
+
+section.plansInclude {
+  background: #1A73A0;
+  color: $light-color;
+  h2 {
+    color: $light-color;
+  }
+  ul {
+    list-style: none;
+    padding: 15px 0;
+    li {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0;
+      line-height: 30px;
+      list-style: none;
+      padding: 20px 0 20px 50px;
+      position: relative;
+
+    }
+  }
+
+    </style>
+</head>
+<body>
+
+
+   <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">Buy and upgrade your membership here</p>
+
+      <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="/app/accountdetails/">Account Details</a>
+              <li class="breadcrumb-item"><a href="/app/yourmembership/">Your Membership</a></li>
+              <li class="breadcrumb-item"><a href="/app/changepassword/">Change Password</a></li>
+              <li class="breadcrumb-item"><a href="/app/Invoices/">Invoices</a></li>
+              <li class="breadcrumb-item"><a href="/app/FAQ/">FAQ</a></li>
+              <li class="breadcrumb-item"><a href="/app/settings/">Settings</a></li>
+            </ol>
+          </div><!-- /.col -->
+
+
+   <section class="ptbm pricingPaid">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12 col-md-3 col-sm-6">
+        <div class="panel pricingGrid pricingBasic">
+          <div class="panel-heading">
+            <h3>Basic</h3></div>
+          <div class="panel-body">
+            <p>Features Include</p>
+            <ul>
+              <li><strong>2</strong> Users</li>
+              <li><strong>2</strong> Service Workflows</li>
+              <li>Unlimited Invoice</li>
+            </ul>
+          </div>
+          <div class="panel-footer">
+            <div class="pricingRate">
+              <div class="priceAnnual"><span class="price"><sup>$</sup>50<small>/month</small></span> <span class="pricePlans">Save $120 Annually</span></div>
+              <div class="priceMonthly"><span class="price priceMonthly"><sup>$</sup>60<small>/month</small></span> <span class="pricePlans">$50 when paid annually</span></div>
+            </div>
+            <div class="pricingButton"><a href="register?plan=basic_annual" class="btn btnAnnually btnPrimary">Get Started</a> <a href="register?plan=basic_monthly" class="btn btnMonthly btnPrimary">Get Started</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3 col-sm-6">
+        <div class="panel pricingGrid pricingPlus">
+          <div class="panel-heading">
+            <h3>Plus</h3>
+            <label>Most Popular</label>
+            <div class="christmasIcons"><img class="christmasHat" src="https://s3-ap-southeast-2.amazonaws.com/agentcis-wp/wp-content/uploads/20161201053953/christmas-hat-icon.png"></div>
+          </div>
+          <div class="panel-body">
+            <p>Features Include</p>
+            <ul>
+              <li><strong>5</strong> Users</li>
+              <li><strong>4</strong> Service Workflows</li>
+              <li>Unlimited Invoice</li>
+            </ul>
+          </div>
+          <div class="panel-footer">
+            <div class="pricingRate">
+              <div class="priceAnnual"><span class="price"><sup>$</sup>100<small>/month</small></span> <span class="pricePlans">Save $240 Annually</span></div>
+              <div class="priceMonthly"><span class="price priceMonthly"><sup>$</sup>120<small>/month</small></span> <span class="pricePlans">$100 when paid annually</span></div>
+            </div>
+            <div class="pricingButton"><a href="register?plan=plus_annual" class="btn btnAnnually btnOrange">Get Started</a> <a href="register?plan=plus_monthly" class="btn btnMonthly btnOrange">Get Started</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3 col-sm-6">
+        <div class="panel pricingGrid pricingPremium">
+          <div class="panel-heading">
+            <h3>Premium</h3></div>
+          <div class="panel-body">
+            <p>Features Include</p>
+            <ul>
+              <li><strong>10</strong> Users</li>
+              <li><strong>8</strong> Service Workflows</li>
+              <li>Unlimited Invoice</li>
+            </ul>
+          </div>
+          <div class="panel-footer">
+            <div class="pricingRate">
+              <div class="priceAnnual"><span class="price"><sup>$</sup>150<small>/month</small></span> <span class="pricePlans">Save $360 Annually</span></div>
+              <div class="priceMonthly"><span class="price priceMonthly"><sup>$</sup>180<small>/month</small></span> <span class="pricePlans">$150 when paid annually</span></div>
+            </div>
+            <div class="pricingButton"><a href="register?plan=premium_annual" class="btn btnAnnually btnPurple">Get Started</a> <a href="register?plan=premium_monthly" class="btn btnMonthly btnPurple">Get Started</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-md-3 col-sm-6">
+        <div class="panel pricingGrid pricingEnterprise">
+          <div class="panel-heading">
+            <h3>Enterprise</h3></div>
+          <div class="panel-body">
+            <p>Features Include</p>
+            <ul>
+              <li><input class="pricingInput" id="enterpriseRate" min="15" type="number" value="15"> Users</li>
+              <li>Unlimited Service Workflows</li>
+              <li>Unlimited Invoice</li>
+            </ul>
+          </div>
+          <div class="panel-footer">
+            <div class="pricingRate">
+              <div class="priceAnnual enterpriseAnnually">
+                <div class="price"><sup>$</sup> <span>375</span> <small>/month</small></div>
+                <div class="pricePlans">Save $900 Annually</div>
+              </div>
+              <div class="priceMonthly enterpriseMonthly">
+                <div class="price priceMonthly"><sup>$</sup> <span>450</span> <small>/month</small></div>
+                <div class="pricePlans">$375 when paid annually</div>
+              </div>
+            </div>
+            <div class="pricingButton"><a href="register?plan=enterprise_annual&amp;users_count=15" class="btn btnAnnually btnGreen">Get Started</a> <a href="register?plan=enterprise_monthly&amp;users_count=15" class="btn btnMonthly btnGreen">Get Started</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pricingViewToggler"><span class="active annual">Annual</span>
+      <div class="toggle-button"><button></button></div>
+      <p><span class="monthly">Monthly</span></p>
+    </div>
+  </div>
+</section>
+    </div>
+   </div>
+
+<script src="{% static 'admin/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap 4 -->
+<script src="{% static 'admin/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<!-- AdminLTE App -->
+<script src="{% static 'admin/dist/js/adminlte.min.js' %}"></script>
+</body>
+</html>
